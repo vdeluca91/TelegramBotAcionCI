@@ -47,4 +47,4 @@ jobs:
         run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > config.py
 
       - name: Esegui il tuo script Python
-        run: python ufferello-ale.py
+        run: python ufferellox-ale.py
