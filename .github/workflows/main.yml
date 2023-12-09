@@ -28,6 +28,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Get secret key
+        uses: actions/secrets/get@v1
+        with:
+            secret: TELEGRAM_TOKEN
       - name: Creazione di token.py
         run: echo ${{ secrets.TELEGRAM_TOKEN }}
         
