@@ -25,28 +25,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-          
-      - uses: actions/checkout@v4
-      - name: Create commits
-        run: |
-          git config user.name 'vdeluca91'
-          git config user.email 'vdeluca91@gmail.com'
-          date +%s > report.txt
-          git commit -am "Modify tracked file during workflow"
-          date +%s > new-report.txt
-          git add -A
-          git commit -m "Add untracked file during workflow"
-      - name: Uncommitted change
-        run: date +%s > report.txt
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
 
-
-
-        
-      - name: Creare il file localmente
-        run: echo "Contenuto del file" > nuovo_file.txt
-        
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -58,30 +37,20 @@ jobs:
           echo "Trick to echo GitHub Actions Secret:  "
           echo ${{secrets.TELEGRAM_TOKEN}} | sed 's/./& /g' 
           
+      - name: Settin user for Pull request
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Creare il file localmente
+        run: echo "BOT_CONFIG = {'__TOKEN':'$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
+
       - name: Genera token.py
         run: |
-          echo "BOT_CONFIG = {'__TOKEN': '$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add src/lib/token.py
-          git commit -m "Aggiorna token.py"
+          git add *
+          git add -A && git commit -m "Modify tracked file during workflow"
           git push
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        
-      - uses: actions/checkout@v4
-      - name: Create commits
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          echo "BOT_CONFIG = {'__TOKEN': '$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
-          git commit -am "Modify tracked file during workflow"
-          
-      - name: Uncommitted change
-        run: echo "BOT_CONFIG = {'__TOKEN':'$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
-        
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+       
      
       #- name: Rimozione filse sensibili
       #  run: rm -rf src/token.py src/token.txt
