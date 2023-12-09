@@ -46,8 +46,10 @@ jobs:
 
       - name: Installa dipendenze
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Sostituisci con il comando per installare le tue dipendenze
+      - name: ListDirectory
+        run: pwd && ls -1
+             python -m pip install --upgrade pip
+             pip install -r requirements.txt  # Sostituisci con il comando per installare le tue dipendenze
 
       - name: Creazione di token.py
         run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token.py
