@@ -55,7 +55,7 @@ jobs:
         run: |
           git config --local user.email "uni389908@studium.unict.it"
           git config --local user.name "Antonino698"      
-          hub pull-request -m "Aggiunta token.py" -b main -h ${{ github.actor }}:main
+          pull-request -m "Aggiunta token.py" -b main -h ${{ github.actor }}:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        
