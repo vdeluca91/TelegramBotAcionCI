@@ -34,10 +34,6 @@ jobs:
       - name: Creazione di token.py
         run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token.py
 
-      #  
-      #- name: Creazione di token.txt
-      #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token.txt
-      #  
       #- name: Creazione di token1.txt
       #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token1.txt
         
