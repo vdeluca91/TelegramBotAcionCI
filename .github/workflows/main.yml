@@ -40,7 +40,7 @@ jobs:
         run: echo ${{ secrets.TELEGRAM_TOKEN }}
         
       - name: Creazione di token.py
-        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token.py
+        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > token.py
 
      
       #- name: Rimozione filse sensibili
