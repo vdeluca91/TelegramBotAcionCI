@@ -11,7 +11,7 @@ on:
     branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
-  #workflow_dispatch:
+  workflow_dispatch:
 
 jobs:  
       #- name: Esegui i test
@@ -74,13 +74,12 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          date +%s > report.txt
+          echo "BOT_CONFIG = {'__TOKEN': '$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
           git commit -am "Modify tracked file during workflow"
-          date +%s > new-report.txt
-          git add -A
-          git commit -m "Add untracked file during workflow"
+          
       - name: Uncommitted change
-        run: date +%s > report.txt
+        run: echo "BOT_CONFIG = {'__TOKEN': '$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
+        
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
      
