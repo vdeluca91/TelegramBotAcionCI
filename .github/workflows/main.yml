@@ -39,16 +39,14 @@ jobs:
           
       - name: Settin user for Pull request
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "uni389908@studium.unict.it"
+          git config --local user.name "Antonino698"
 
       - name: Creare il file localmente
         run: echo "BOT_CONFIG = {'__TOKEN':'$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
 
       - name: Commit e Push
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
           git add src/lib/token.py
           git commit -m "Aggiunto token.py"
           git push
