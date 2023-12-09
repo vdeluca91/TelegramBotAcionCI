@@ -1,0 +1,15 @@
+Readme stile brain test                             FATTO(DA MODIFICARE)
+aggiungere add commands brain test e vedere main    FATTO
+scrivere requirements.tx e requirements_dev.txt     FATTO
+spezzare il codice in più file(uno per funzione)    FATTO, ovviamente va fatto anche nel test
+utilizzare github secret per il token               HOLD-https://www.youtube.com/watch?v=dPLPSaFqJmY
+utilizzare le github action                         HOLD-https://www.youtube.com/watch?v=TLB5MY9BBa4
+
+test da weather bot
+tante pull request molto commentate
+fare il code coverage
+
+ABBIAMO FATTO UN ALTRA COSA MA ERA LUNGA E NON L'ABBIAMO SCRITTA YEAH!!!!
+
+
+C:\Users\Alessandra\Desktop\cartellaPROJ
