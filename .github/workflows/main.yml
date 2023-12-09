@@ -45,11 +45,19 @@ jobs:
       - name: Creare il file localmente
         run: echo "BOT_CONFIG = {'__TOKEN':'$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
 
-      - name: Genera token.py
+      - name: Commit e Push
         run: |
-          git add *
-          git add -A && git commit -m "Modify tracked file during workflow"
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add src/lib/token.py
+          git commit -m "Aggiunto token.py"
           git push
+  
+      - name: Crea Richiesta di Pull
+        run: |
+          hub pull-request -m "Aggiunta token.py" -b main -h ${{ github.actor }}:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        
      
       #- name: Rimozione filse sensibili
