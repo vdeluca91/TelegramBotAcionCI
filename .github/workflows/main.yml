@@ -31,16 +31,13 @@ jobs:
       - name: Get secret key
         uses: actions/secrets/get@v1
         with:
-            secret: TELEGRAM_TOKEN
+            secret: TOKEN
       - name: Creazione di token.py
-        run: echo ${{ secrets.TELEGRAM_TOKEN }}
+        run: echo ${{ secrets.TOKEN }}
         
       - name: Creazione di token.py
-        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token.py
+        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TOKEN }})'" > src/lib/token.py
 
-      #- name: Creazione di token1.txt
-      #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/lib/token1.txt
-        
      
       #- name: Rimozione filse sensibili
       #  run: rm -rf src/token.py src/token.txt
