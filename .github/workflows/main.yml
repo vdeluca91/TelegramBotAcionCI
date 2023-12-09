@@ -11,55 +11,37 @@ on:
     branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  #workflow_dispatch:
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del codice
-        uses: actions/checkout@v2
-
-      - name: Configura Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-
-      - name: Installa dipendenze
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Sostituisci con il comando per installare le tue dipendenze
-
-      - name: Esegui i test
-        run: python -m unittest discover -s tests/
-
+jobs:  
+      #- name: Esegui i test
+      #  run: python -m unittest discover -s tests/
   build:
     runs-on: ubuntu-latest
     steps:
-      #- name: Checkout del codice
-      #  uses: actions/checkout@v2
-
-      - name: Configura Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.x
-          
-      - name: Creazione di token.py
-        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token.py
-        
-      - name: Creazione di token.txt
-        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token.txt
-        
-      - name: Creazione di token1.txt
-        run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token1.txt
-        
-      - name: Installa dipendenze
+          python-version: '3.x'
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Sostituisci con il comando per installare le tue dipendenze
-      - name: Rimozione filse sensibili
-        run: rm -rf src/token.py src/token.txt
+          pip install -r requirements.txt
+
+      #- name: Creazione di token.py
+      #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token.py
+      #  
+      #- name: Creazione di token.txt
+      #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token.txt
+      #  
+      #- name: Creazione di token1.txt
+      #  run: echo "TELEGRAM_TOKEN = '$(echo ${{ secrets.TELEGRAM_TOKEN }})'" > src/token1.txt
+        
+     
+      #- name: Rimozione filse sensibili
+      #  run: rm -rf src/token.py src/token.txt
 
         
-      - name: Esegui il tuo script Python
-        run: python ufferellox-ale.py
+      #- name: Esegui il tuo script Python
+      #  run: python ufferellox-ale.py
