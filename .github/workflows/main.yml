@@ -78,7 +78,7 @@ jobs:
           git commit -am "Modify tracked file during workflow"
           
       - name: Uncommitted change
-        run: echo "BOT_CONFIG = {'__TOKEN': '$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
+        run: echo "BOT_CONFIG = {'__TOKEN':'$(echo ${{ secrets.TELEGRAM_TOKEN }})'}" > src/lib/token.py
         
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
